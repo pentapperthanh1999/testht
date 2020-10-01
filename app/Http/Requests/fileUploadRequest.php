@@ -6,25 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class fileUploadRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+            'file' => 'required|mimes:jpeg,png,jpg,gif, svg,csv,txt,xlx,xls,pdf|max:2048'
         ];
     }
 }

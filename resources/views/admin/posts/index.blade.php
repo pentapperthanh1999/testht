@@ -8,6 +8,7 @@
                 <p>Hi! {{auth()->user()->name}}</p>
             </div>
             <div class="pull-right">
+                <a href="{{ route('contact') }}" class="btn btn-info">Contact</a>
                 <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New post</a>
                 <a class="btn btn-primary" href="{{ route('pdf') }}">Export to PDF</a>    
             </div>
@@ -50,4 +51,5 @@
         </tr>
         @endforeach
     </table>
+    {{ $posts->links() }}
 @endsection

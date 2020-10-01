@@ -7,12 +7,18 @@ use App\Http\requests\fileUploadrequest;
 use Illuminate\Http\request;
 
 class FileUploadController extends Controller
-{
+{   
+    /*user authentication*/
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+    /*show view upload file*/
     public function createForm()
     {
     	return view('file-upload');
     }
-
+    /*upload file*/
     public function fileUpload(fileUploadrequest $request)
     {
     	$fileModel = new File;

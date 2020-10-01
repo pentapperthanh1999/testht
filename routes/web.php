@@ -28,3 +28,5 @@ Route::get('/pdf', 'PostController@createPDF')->name('pdf');
 Route::get('/upload-file', 'FileUploadController@createForm');
 // Store file
 Route::post('/upload-file', 'FileUploadController@fileUpload')->name('fileUpload');
+//Contact
+Route::get('contact', 'ContactController@sendMail')->name('contact');
