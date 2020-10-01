@@ -27,6 +27,7 @@
     @csrf
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
+            <input type="hidden" value="{{Auth::user()->id}}" name="user_id" />
             <div class="form-group">
                 <strong>Title:</strong>
                 <input type="text" name="title" class="form-control" placeholder="Title">

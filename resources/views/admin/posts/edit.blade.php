@@ -23,19 +23,23 @@
     </div>
 @endif
    
-<form action="{{ route('posts.edit') }}" method="POST">
+<form action="{{ route('posts.update', $posts->id) }}" method="POST">
+    
+    @method('PUT')
     @csrf
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                <input type="text" name="title" class="form-control" placeholder="Title">
+                <input type="text" name="title" class="form-control" value="{{$posts->title}}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
+            <input type="hidden" value="{{Auth::user()->id}}" name="user_id" />
             <div class="form-group">
                 <strong>Desc:</strong>
-                <textarea class="form-control" style="height:150px" name="desc" placeholder="Decription"></textarea>
+                <textarea class="form-control" style="height:150px" name="desc">{{$posts->desc}}</textarea>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
