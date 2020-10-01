@@ -9,7 +9,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New post</a>
-
+                <a class="btn btn-primary" href="{{ route('pdf') }}">Export to PDF</a>    
             </div>
         </div>
         
@@ -50,5 +50,4 @@
         </tr>
         @endforeach
     </table>
-      
 @endsection
