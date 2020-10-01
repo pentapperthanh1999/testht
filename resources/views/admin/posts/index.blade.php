@@ -12,13 +12,13 @@
                 <a class="btn btn-primary" href="{{ route('pdf') }}">Export to PDF</a>    
             </div>
         </div>
-        
     </div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
+    @include('file-upload')
     <table class="table table-bordered">
         <tr>
             <th>STT</th>
