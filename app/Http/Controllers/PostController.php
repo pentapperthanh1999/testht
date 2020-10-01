@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Auth, View;
 use DB;
+use PDF;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
@@ -19,7 +20,7 @@ class PostController extends Controller
     }
 
     public function index()
-    {
+    {   
         $posts = Post::with('user')->get();
         return view('admin.posts.index', compact('posts'));
     }
@@ -73,11 +74,24 @@ class PostController extends Controller
         $result = $post->delete();
         if ($result) {
             $post['result'] = true;
-            $post['message'] = "post Successfully Deleted!";
+            $post['message'] = "Post Successfully Deleted!";
         } else {
             $post['result'] = false;
-            $post['message'] = "post was not Deleted, Try Again!";
+            $post['message'] = "Post was not Deleted, Try Again!";
         }
         return redirect()->route('posts.index')->with('success', 'Post deleted success');
+    }
+    // Generate PDF
+    public function createPDF() 
+    {
+      // retreive all records from db
+      $posts = Post::with('user')->get();
+
+      // share data to view
+      view()->share('posts',$posts);
+      $pdf = PDF::loadView('admin.posts.pdf_view', compact('posts'))
+        ->setPaper('a4','landscape');
+      // download PDF file with download method
+      return $pdf->download('pdf_file.pdf');
     }
 }
