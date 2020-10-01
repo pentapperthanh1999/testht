@@ -22,4 +22,9 @@ Route::resource('posts', 'PostController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/pdf', 'PostController@createPDF')->name('pdf');
+//Create file upload form
+Route::get('/upload-file', 'FileUploadController@createForm');
+// Store file
+Route::post('/upload-file', 'FileUploadController@fileUpload')->name('fileUpload');
