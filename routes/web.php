@@ -29,4 +29,9 @@ Route::get('/upload-file', 'FileUploadController@createForm');
 // Store file
 Route::post('/upload-file', 'FileUploadController@fileUpload')->name('fileUpload');
 //Contact
-Route::get('contact', 'ContactController@sendMail')->name('contact');
+Route::get('contact', 'ContactController@index')->name('contact');
+Route::post('/contact/send', 'ContactController@send_mail')->name('send_mail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
