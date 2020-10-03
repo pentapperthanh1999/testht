@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         @php($i = 0)
-        @foreach ($posts as $post)
+        @foreach ($posts ?? '' as $post)
         <tr>
             <td><?php echo ++$i; ?></td>
             <td>{{ $post->title }}</td>

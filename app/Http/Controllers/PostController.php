@@ -22,7 +22,7 @@ class PostController extends Controller
     /*get all user from the Model*/
     public function index()
     {   
-        $posts = Post::with('user')->paginate(5);
+        $posts = Post::with('user')->paginate(20);
         return view('admin.posts.index', compact('posts'));
     }
     /*return view create post*/
